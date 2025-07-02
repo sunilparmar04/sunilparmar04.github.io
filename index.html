@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunil Parmar - Android Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></radialGradient></defs><circle cx="200" cy="300" r="100" fill="url(%23grad1)"/><circle cx="800" cy="200" r="150" fill="url(%23grad1)"/><circle cx="400" cy="700" r="120" fill="url(%23grad1)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: white;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .timeline-content h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .company {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .duration {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Sunil Parmar</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sunil Parmar</h1>
+            <h2>Tech Lead Android Developer</h2>
+            <p>9+ years of experience building high-performance mobile applications with Kotlin, Jetpack Compose, and modern Android architecture</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">9+</span>
+                        <span>Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span>Apps Developed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span>Healthcare Apps</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>I'm a results-oriented Android Engineer with 9+ years of experience building and scaling mobile apps from concept to deployment. Currently serving as Tech Lead at Biofourmis India, I specialize in Kotlin, MVVM architecture, Jetpack Compose, and Firebase integration.</p>
+                    
+                    <p>My expertise spans the entire mobile development lifecycle, from architecting scalable solutions to mentoring development teams. I'm passionate about clean architecture, performance optimization, and creating delightful user experiences that make a real impact.</p>
+                    
+                    <p>I have a proven track record of delivering high-impact consumer apps with millions of downloads, particularly in healthcare, social media, and e-commerce domains.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Architecture & Patterns</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MVVM</span>
+                        <span class="skill-tag">Clean Architecture</span>
+                        <span class="skill-tag">Repository Pattern</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>UI Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jetpack Compose</span>
+                        <span class="skill-tag">XML Layouts</span>
+                        <span class="skill-tag">Material Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Libraries & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Dagger/Hilt</span>
+                        <span class="skill-tag">Retrofit</span>
+                        <span class="skill-tag">Room</span>
+                        <span class="skill-tag">Glide</span>
+                        <span class="skill-tag">Lottie</span>
+                        <span class="skill-tag">WorkManager</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">FCM</span>
+                        <span class="skill-tag">Crashlytics</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Development Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Postman</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Tech Lead</h3>
+                        <div class="company">Biofourmis India Private Limited</div>
+                        <div class="duration">July 2020 - Present | Bangalore</div>
+                        <p>Leading Android development for three key healthcare apps including Care@Home Patient, Heart Failure Care, and Care@Home Provider. Architected scalable features including real-time video calls, secure chat, and Bluetooth integrations for remote health monitoring.</p>
+                        <ul>
+                            <li>Spearheaded migration to Jetpack Compose with MVVM architecture</li>
+                            <li>Mentored team of Android developers and conducted code reviews</li>
+                            <li>Collaborated with product, QA, and backend teams across multiple geographies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Android Engineer</h3>
+                        <div class="company">Vebbler Technologies Pvt. Ltd.</div>
+                        <div class="duration">Apr 2019 - Present | Bangalore</div>
+                        <p>Built Vebbler Social App with real-time chat using Firebase, Kotlin, and Jetpack components. Architected Vebbler Studio photo printing app with offline support and payment gateway integration.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Android Developer</h3>
+                        <div class="company">NoBroker Technologies</div>
+                        <div class="duration">Aug 2018 - Apr 2019 | Bangalore</div>
+                        <p>Developed Refer & Earn App with intuitive referral flow. Contributed to NoBrokerHOOD gate management system and built internal FRM tool for field agent tracking.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Android Developer</h3>
+                        <div class="company">CodingMart Technologies</div>
+                        <div class="duration">Jan 2018 - July 2018 | Bangalore</div>
+                        <p>Contracted to OLA Techplay for OLA Retail App development with voice control and SMS read features for drivers.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Android Developer</h3>
+                        <div class="company">Tech Active Solutions</div>
+                        <div class="duration">Oct 2015 - Jan 2018 | Bangalore</div>
+                        <p>Built Orbit (Customer & Driver) - UK-based Uber-style app. Developed SMS Gateway App with Firebase and various service and delivery apps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Care@Home Patient App</h3>
+                    <p>Healthcare app for remote patient monitoring with real-time video calls, secure chat, and Bluetooth device integration. Built with Kotlin, Jetpack Compose, and Firebase.</p>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.biofourmis.ipmpatient" class="project-link">Play Store</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Heart Failure Care</h3>
+                    <p>Specialized healthcare app for heart failure patients with advanced monitoring capabilities and clinical validation across multiple geographies.</p>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.biofourmis.biovitalshfcare" class="project-link">Play Store</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Care@Home Provider</h3>
+                    <p>Provider-facing healthcare app enabling healthcare professionals to monitor and communicate with patients remotely using modern Android architecture.</p>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.biofourmis.careathomecareprovider" class="project-link">Play Store</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Vebbler Social App</h3>
+                    <p>Social media app with real-time chat, Firebase integration, and rich media sharing features including GIFs and stickers.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Vebbler Studio</h3>
+                    <p>Photo printing app with offline support, payment gateway integration, and intuitive design tools for custom photo products.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Devotional Apps</h3>
+                    <p>Collection of offline devotional apps including Shiv Tandav, Hanuman Chalisa, and Gayatri Mantra with animations and media controls.</p>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/dev?id=7316691983113704577" class="project-link">Play Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm always interested in discussing new opportunities, innovative projects, or potential collaborations. Let's connect and explore how we can work together!</p>
+                <div class="contact-info">
+                    <a href="tel:+918866381943" class="contact-item">
+                        <span>📞</span>
+                        <span>+91 8866381943</span>
+                    </a>
+                    <a href="mailto:parmarsunil09@gmail.com" class="contact-item">
+                        <span>✉️</span>
+                        <span>parmarsunil09@gmail.com</span>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <span>📍</span>
+                        <span>Bangalore, India</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sunil Parmar. All rights reserved. | Android Developer with 9+ years of experience</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Typing effect for hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after page load
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                typeWriter(heroTitle, 'Sunil Parmar', 150);
+            }
+        });
+
+        // Add hover effects to timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
