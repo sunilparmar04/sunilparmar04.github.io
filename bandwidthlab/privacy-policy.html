@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy – Bandwidth Lab</title>
+    <meta name="description" content="Privacy Policy for the Bandwidth Lab Android app.">
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --surface: #ffffff;
+            --text: #11151c;
+            --muted: #5e6878;
+            --border: #d8dde9;
+            --primary: #3b5bf0;
+            --accent: #14a889;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0c0f14;
+                --surface: #161b24;
+                --text: #eef1f6;
+                --muted: #8d97a8;
+                --border: #2f3746;
+                --primary: #4c6fff;
+                --accent: #53ecc2;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.65;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 20px 64px;
+        }
+
+        header {
+            margin-bottom: 32px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .brand svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 16px 0 4px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin: 0 0 8px;
+            color: var(--primary);
+        }
+
+        p,
+        li {
+            color: var(--muted);
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+        }
+
+        .summary {
+            border-left: 4px solid var(--accent);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 8px 0 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 15px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        th {
+            color: var(--text);
+        }
+
+        td {
+            color: var(--muted);
+        }
+
+        code {
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        a {
+            color: var(--primary);
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 32px;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <div class="brand">
+            <svg viewBox="0 0 108 108" aria-hidden="true">
+                <path d="M30,66 A26,26 0 1,1 78,66" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+                <path d="M54,62 L68,42" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="54" cy="62" r="6" fill="var(--accent)"/>
+            </svg>
+            Bandwidth Lab
+        </div>
+        <h1>Privacy Policy</h1>
+        <p class="meta">Effective date: October 20, 2026 · Applies to Bandwidth Lab for Android (package <code>com.bandwidthlab</code>)</p>
+    </header>
+
+    <section class="summary">
+        <h2>Summary</h2>
+        <p>
+            Bandwidth Lab is a network testing tool. It does <strong>not</strong> collect, store on any server, sell, or share
+            any personal data. Everything the app needs, including your profiles, chosen apps, and settings, stays on your device.
+            The app has no accounts, no analytics, no advertising, and no third-party SDKs.
+        </p>
+    </section>
+
+    <section>
+        <h2>1. Who we are</h2>
+        <p>
+            Bandwidth Lab ("the app", "we", "us") is developed and published by
+            <!-- TODO: replace with your developer name exactly as shown on Google Play -->
+            <strong>[Developer name]</strong>.
+            This policy explains what information the app handles and how.
+        </p>
+    </section>
+
+    <section>
+        <h2>2. How the app uses the VPN (VpnService)</h2>
+        <p>
+            The core feature of Bandwidth Lab is simulating network conditions such as limited bandwidth, latency, jitter,
+            and packet loss, so developers and testers can see how apps behave on slow or unstable connections. To do this,
+            the app uses Android's <code>VpnService</code> to create a local VPN interface <strong>that runs entirely on your device</strong>.
+        </p>
+        <ul>
+            <li>The VPN only starts after you tap <strong>Start</strong> and accept Android's VPN connection request.</li>
+            <li>
+                Network traffic from the apps you choose (or all apps, if you choose none) is passed through the app on your device,
+                delayed, rate-limited, or dropped according to the active profile, and then sent on to its original destination.
+            </li>
+            <li>There is no remote VPN server. Your traffic is <strong>never</strong> routed through, sent to, or stored by any server operated by us.</li>
+            <li>The app does not inspect, record, log, modify, or store the content of your traffic, the websites you visit, or the servers your apps connect to.</li>
+            <li>The app does not use the VPN to change your IP address, bypass restrictions, inject ads, or collect browsing history.</li>
+            <li>You can stop the VPN at any time with the <strong>Stop</strong> button in the app or from its notification.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>3. Information the app accesses</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Information</th>
+                <th>Why</th>
+                <th>Leaves the device?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>List of installed apps that have a launcher icon (name, icon, package name)</td>
+                <td>So you can choose which apps to throttle</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Network traffic of the chosen apps</td>
+                <td>Relayed on the device to apply the selected network conditions; measured only as live speed (bytes per second) shown in the app</td>
+                <td>Only to its original destination, exactly as without the app</td>
+            </tr>
+            <tr>
+                <td>Network profiles you create, chosen apps, theme, and app preferences</td>
+                <td>Saved so the app remembers your settings</td>
+                <td>No. Stored in the app's private storage; cloud backup and device transfer are disabled</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            The app does not access your contacts, location, camera, microphone, photos, files, accounts, phone number,
+            or device identifiers, and does not create any user identifier.
+        </p>
+    </section>
+
+    <section>
+        <h2>4. Permissions</h2>
+        <ul>
+            <li><strong>VPN (<code>BIND_VPN_SERVICE</code>)</strong>: creates the local VPN used to simulate network conditions.</li>
+            <li><strong>Internet and network state</strong>: forwards the throttled traffic and reads the device's current DNS servers.</li>
+            <li><strong>Foreground service</strong>: keeps throttling running while it is active and shows an ongoing notification with a Stop action.</li>
+            <li><strong>Notifications</strong> (Android 13+): shows that throttling is active. Requested only when you first tap Start; throttling still works if you deny it.</li>
+            <li><strong>Installed app visibility</strong> (launcher apps only): lets you pick the apps to throttle.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. Data sharing and third parties</h2>
+        <p>
+            We do not share, sell, rent, or transfer any data to third parties, because the app does not collect any.
+            The app contains no advertising, analytics, crash-reporting, or tracking SDKs.
+        </p>
+        <p>
+            Google Play may collect information when you download or update the app, as described in
+            <a href="https://policies.google.com/privacy" rel="noopener">Google's Privacy Policy</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2>6. Data retention and deletion</h2>
+        <p>
+            All data stays on your device until you remove it. You can delete custom profiles in the app, clear the app's data
+            in Android Settings → Apps → Bandwidth Lab → Storage, or uninstall the app, which removes everything it stored.
+            Since we hold no data about you, there is nothing for us to delete on our side.
+        </p>
+    </section>
+
+    <section>
+        <h2>7. Security</h2>
+        <p>
+            The app keeps its data in Android's private app storage, which other apps cannot read. The VPN interface exists only
+            on your device and only while throttling is active. Traffic that apps send over encrypted connections (such as HTTPS)
+            stays encrypted; Bandwidth Lab does not decrypt it.
+        </p>
+    </section>
+
+    <section>
+        <h2>8. Children</h2>
+        <p>
+            Bandwidth Lab is a developer and testing tool and is not directed at children under 13. It does not knowingly
+            collect any information from children or from anyone else.
+        </p>
+    </section>
+
+    <section>
+        <h2>9. Changes to this policy</h2>
+        <p>
+            If this policy changes, we will update this page and the effective date above. Significant changes will also be
+            shown inside the app, where you will be asked to review the policy again.
+        </p>
+    </section>
+
+    <section>
+        <h2>10. Contact</h2>
+        <p>
+            Questions about this policy or the app can be sent to
+            <!-- TODO: replace with the support email shown on your Google Play listing -->
+            <a href="mailto:support@example.com"><strong>support@example.com</strong></a>.
+        </p>
+    </section>
+
+    <footer>© 2026 Bandwidth Lab</footer>
+</main>
+</body>
+</html>
